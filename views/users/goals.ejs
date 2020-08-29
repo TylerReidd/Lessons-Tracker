@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
-<p>YOO</p>
+<h1>Goals List</h1>
+<a type="button" class="btn btn-info" href="/users/new">Set a Goal</a>
 <table class ="table">
     <thead>
         <tr>
@@ -21,7 +22,7 @@
             <td><%= user.goals.startDate %></td>
             <td><%= user.goals.dueDate %></td>
             <td><%= user.goals.completed %></td>
-            <td><a type="button" class="btn btn-info" href="/users/goals<%= g._id %>"></a></td>
+            <td><a type="button" class="btn btn-info" href="/users/goals<%= g._id %>">Goal Info</a></td>
         </tr>
     <% })%>
     </tbody>
