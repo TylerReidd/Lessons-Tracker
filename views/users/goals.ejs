@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
 
+
 <h1>Goals List</h1>
 <a type="button" class="btn btn-info" href="/users/new">Set a Goal</a>
 <table class ="table">
@@ -16,12 +17,12 @@
     <tbody>
         <% user.goals.forEach((g) => { %> 
         <tr>
-            <td><%= user.goals.goal %></td>
-            <td><%= user.goals.daysPracticed %></td>
-            <td><%= user.goals.challenges %></td>
-            <td><%= user.goals.startDate %></td>
-            <td><%= user.goals.dueDate %></td>
-            <td><%= user.goals.completed %></td>
+            <td><%= g.goal %></td>
+            <td><%= g.daysPracticed %></td>
+            <td><%= g.challenges %></td>
+            <td><%= g.startDate %></td>
+            <td><%= g.dueDate %></td>
+            <td><%= g.completed %></td>
             <td><a type="button" class="btn btn-info" href="/users/goals<%= g._id %>">Goal Info</a></td>
         </tr>
     <% })%>

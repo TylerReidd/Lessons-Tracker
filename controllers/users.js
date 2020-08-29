@@ -4,8 +4,20 @@ const User = require('../models/user');
 module.exports = {
   index,
   showProfile, 
-  goalsPage
+  goalsPage,
+  create
 };
+
+//display all goals 
+
+
+//creates a new goal
+function create(req,res){
+  User.create(req.body)
+  .then(goal => {
+    res.redirect('/users/goals')
+  })
+}
 
 function goalsPage(req,res) {
   res.render('users/new')
