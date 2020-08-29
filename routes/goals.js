@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const usersCtrl = require('../controllers/users');
+const goalsCtrl = require('../controllers/goals');
 
 
-router.post('/goals', isLoggedIn, usersCtrl.create)
+router.post('/goals', isLoggedIn, goalsCtrl.create)
 
 
 function isLoggedIn(req, res, next) {
