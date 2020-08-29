@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<p>YOO</p>
+<table class ="table">
+    <thead>
+        <tr>
+            <th>Goal</th>
+            <th>Days Practiced</th>
+            <th>Challenges</th>
+            <th>Start Date</th>
+            <th>Due Date </th>
+            <th>Completed?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% user.goals.forEach((g) => { %> 
+        <tr>
+            <td><%= user.goals.goal %></td>
+            <td><%= user.goals.daysPracticed %></td>
+            <td><%= user.goals.challenges %></td>
+            <td><%= user.goals.startDate %></td>
+            <td><%= user.goals.dueDate %></td>
+            <td><%= user.goals.completed %></td>
+            <td><a type="button" class="btn btn-info" href="/users/goals<%= g._id %>"></a></td>
+        </tr>
+    <% })%>
+    </tbody>
+</table>

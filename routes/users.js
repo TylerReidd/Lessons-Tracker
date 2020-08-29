@@ -1,10 +1,11 @@
 var router = require('express').Router();
 var usersCtrl = require('../controllers/users');
+// const users = require('../controllers/users');
 
 // GET /users
 router.get('/', usersCtrl.index);
-router.get('/users/profile', isLoggedIn, usersCtrl.showProfile)
-
+router.get('/users/goals', isLoggedIn, usersCtrl.showProfile)
+// router.get('/users/goals', isLoggedIn, usersCtrl.goalsPage)
 
 
 
