@@ -4,8 +4,12 @@ const User = require('../models/user');
 module.exports = {
   index,
   showProfile, 
-  
+  goalsPage
 };
+
+function goalsPage(req,res) {
+  res.render('users/new')
+}
 
 //use this function as archetype create a users/goals page 
 function showProfile(req,res) {
