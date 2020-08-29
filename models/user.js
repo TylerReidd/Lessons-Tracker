@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const goalSchema = new mongoose.Schema({
   goal: String,
-  daysPracticed: Number,
+  daysPracticed: String,
   challenges: String,
   startDate: Date,
   dueDate: Date,

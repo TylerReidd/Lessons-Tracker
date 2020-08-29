@@ -2,15 +2,19 @@
     <div class="nav-wrapper">
       <a href="/users/goals" class="brand-logo left">My Goals</a>
       <a href="/users/questions" >Ask A Question</a>
+      <a href="/">Tuner</a>
     </div>
   </nav>
 
   <body>
       <h2 class="table">Set a New Goal!</h2>
-      <form class="table" action="/users" method="POST">
+      <form class="table" action="/users/goals" method="POST">
     <label> Goal
             <input type="text"><br>
     </label><br>
+    <label> Practice Days
+        <input type="text">
+    </label><br><br>
     <label>Challenges
         <input type="text">
         <br><br>
@@ -22,7 +26,12 @@
         <input type="date">
     </label>
     <br><br>
-    <button><a type="button" class="btn btn-info" href="/users/goals">Submit</a></button>
+    <label>Completed?
+        <input type="checkbox">
+    </label>
+    <br><br>
+    <input type="submit" class="btn btn-info" value="Submit">
+
     </form>
   </body>
 
