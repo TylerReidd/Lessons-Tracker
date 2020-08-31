@@ -1,16 +1,16 @@
-const router = require('express').Router()
-const questionsCtrl = require('../controllers/questions')
+// const router = require('express').Router()
+// const questionsCtrl = require('../controllers/questions')
 
 
-router.get('users/questions', isLoggedIn, questionsCtrl.)
-
-
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    res.redirect("/auth/google");
-  }
+// router.get('users/questions', isLoggedIn, questionsCtrl.)
 
 
 
-module.exports = router
+// function isLoggedIn(req, res, next) {
+//     if (req.isAuthenticated()) return next();
+//     res.redirect("/auth/google");
+//   }
+
+
+
+// module.exports = router
