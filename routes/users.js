@@ -6,7 +6,6 @@ const usersCtrl = require('../controllers/users');
 router.get('/', usersCtrl.index);
 router.get('/users/goals', isLoggedIn, usersCtrl.showGoalsPage)
 router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
-router.post('/users/goals', isLoggedIn, usersCtrl.createGoal)
 
 
 

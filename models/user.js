@@ -12,7 +12,7 @@ const goalSchema = new Schema({
 })
 
 
-var userSchema = new Schema({
+const userSchema = new Schema({
   name: String,
   email: String,
   avatar: String,
