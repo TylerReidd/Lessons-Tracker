@@ -8,14 +8,17 @@ module.exports = {
 
 function create(req,res){
     req.user.goals.push(req.body)
-    console.log(req.user.goals)
     req.user.save().then(() => {
+        console.log(req.user)
         res.render('users/goals', {
             user: req.user,
             goals:req.body
+            
         })
     })
 }
+
+
 
 
 // function create(req,res){

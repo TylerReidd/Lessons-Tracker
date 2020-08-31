@@ -8,26 +8,26 @@
 
   <body>
       <h2 class="table">Set a New Goal!</h2>
-      <form class="table" action="/goals" method="POST">
+      <form class="table" action="/goals" method="POST" > 
     <label> Goal
-            <input type="text"><br>
+            <input name="goal" type="text"><br>
     </label><br>
     <label> Practice Days
-        <input type="text">
+        <input name="daysPracticed" type="text">
     </label><br><br>
     <label>Challenges
-        <input type="text">
+        <input name="challenges"type="text">
         <br><br>
     </label>
     <label> Start Date
-        <input type="date">
+        <input type="date" name="startDate">
     </label><br> <br>
     <label> Due Date
-        <input type="date">
+        <input type="date" name="dueDate">
     </label>
     <br><br>
     <label>Completed?
-        <input type="checkbox">
+        <input name="completed" type="checkbox">
     </label>
     <br><br>
     <input type="submit" class="btn btn-info" value="Submit">

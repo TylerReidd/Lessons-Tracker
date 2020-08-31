@@ -5,19 +5,22 @@ module.exports = {
   index,
   showGoalsPage, 
   createGoalsPage,
-  createGoal
+  // createGoal
 };
 
 //create a new goal 
-function createGoal(req,res){
- req.user.goals.push(req.body)
- req.user.save().then((err,goal) => {
-  res.redirect('/users/goals', {
-    user:req.user,
-    goals:req.body
-  })
-  })
-}
+// function createGoal(req,res){
+//   req.user.goals.push(req.body)
+//   console.log('farts')
+//   console.log(req.user.goals)
+//   req.user.save().then(() => {
+//       res.render('users/goals', {
+//           user: req.user,
+//           goals:req.body
+//       })
+//   })
+// }
+
 
 
 
@@ -29,6 +32,7 @@ function createGoalsPage(req,res) {
 //Create page with a list of goals 
 function showGoalsPage(req,res) {
   User.findById(req.user.id)
+  
   .then((user) => {
     res.render('users/goals', {title: "Profile Page", user })
   })
