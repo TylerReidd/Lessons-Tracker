@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 
-const goalSchema = new mongoose.Schema({
+const goalSchema = new Schema({
   goal: String,
   daysPracticed: String,
   challenges: String,
