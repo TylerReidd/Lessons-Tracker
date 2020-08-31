@@ -4,8 +4,9 @@ const usersCtrl = require('../controllers/users');
 
 // GET /users
 router.get('/', usersCtrl.index);
-router.get('/users/goals', isLoggedIn, usersCtrl.showProfile)
-router.get('/users/new', isLoggedIn, usersCtrl.goalsPage)
+router.get('/users/goals', isLoggedIn, usersCtrl.showGoalsPage)
+router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
+router.post('/users/goals', isLoggedIn, usersCtrl.createGoal)
 
 
 

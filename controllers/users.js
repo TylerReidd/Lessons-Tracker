@@ -3,22 +3,31 @@ const User = require('../models/user');
 
 module.exports = {
   index,
-  showProfile, 
-  goalsPage
+  showGoalsPage, 
+  createGoalsPage,
+  createGoal
 };
 
-//display all goals 
+//create a new goal 
+function createGoal(req,res){
+ req.user.goals.push(req.body)
+ req.user.save().then((err,goal) => {
+  res.redirect('/users/goals', {
+    user:req.user,
+    goals:req.body
+  })
+  })
+}
 
 
-//creates a new goal
 
-
-function goalsPage(req,res) {
+//Render page with input forms to create a goal
+function createGoalsPage(req,res) {
   res.render('users/new')
 }
 
-//use this function as archetype create a users/goals page 
-function showProfile(req,res) {
+//Create page with a list of goals 
+function showGoalsPage(req,res) {
   User.findById(req.user.id)
   .then((user) => {
     res.render('users/goals', {title: "Profile Page", user })
