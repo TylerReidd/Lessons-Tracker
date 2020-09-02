@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+const methodOverride = require('method-override')
 
 
 // load the env vars
@@ -20,7 +21,7 @@ require('./config/passport');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const goalsRouter = require('./routes/goals');
-// const questionsRouter =require('./routes/questions')
+const questionsRouter =require('./routes/questions')
 
 
 // view engine setup
@@ -37,6 +38,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(methodOverride('_method'))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,7 +47,7 @@ app.use(passport.session());
 app.use('/', usersRouter);
 app.use('/auth', authRouter);
 app.use('/', goalsRouter);
-// app.use('/', questionsRouter)
+app.use('/', questionsRouter)
 
 // invalid request, send 404 page
 app.use(function(req, res) {

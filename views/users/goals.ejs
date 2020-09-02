@@ -17,13 +17,16 @@
     <tbody>
         <% user.goals.forEach((g) => { %> 
         <tr>
+            <td><form action="/goals/<%= g.id %>" method="POST">
+            </form></td>
             <td><%= g.goal %></td>
             <td><%= g.daysPracticed %></td>
             <td><%= g.challenges %></td>
             <td><%= g.startDate %></td>
             <td><%= g.dueDate %></td>
             <td><%= g.completed %></td>
-            <td><a type="button" class="btn btn-info" href="/users/goals<%= g._id %>">Goal Info</a></td>
+            <td><form action="/users/goals/<%= g.id %>?_method=DELETE" method="POST">
+                <button type="submit">DELETE</button></form></td>
         </tr>
     <% })%>
     </tbody>

@@ -2,32 +2,32 @@ navigator.getUserMedia({ "audio": true }, use_stream, function() {});
 
 function use_stream(stream)
 {
-    var audio_context = new AudioContext();
-    var microphone = audio_context.createMediaStreamSource(stream);
+    const audio_context = new AudioContext();
+    const microphone = audio_context.createMediaStreamSource(stream);
     // do something with the microphone stream...
 }
 
-var C2 = 65.41; // C2 note, in Hz.
-var notes = [ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" ];
-var test_frequencies = [];
-for (var i = 0; i < 30; i++)
+const C2 = 65.41; // C2 note, in Hz.
+const notes = [ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" ];
+const test_frequencies = [];
+for (const i = 0; i < 30; i++)
 {
-	var note_frequency = C2 * Math.pow(2, i / 12);
-	var note_name = notes[i % 12];
-	var note = { "frequency": note_frequency, "name": note_name };
-	var just_above = { "frequency": note_frequency * Math.pow(2, 1 / 48), "name": note_name + " (a bit sharp)" };
-	var just_below = { "frequency": note_frequency * Math.pow(2, -1 / 48), "name": note_name + " (a bit flat)" };
+	const note_frequency = C2 * Math.pow(2, i / 12);
+	const note_name = notes[i % 12];
+	const note = { "frequency": note_frequency, "name": note_name };
+	const just_above = { "frequency": note_frequency * Math.pow(2, 1 / 48), "name": note_name + " (a bit sharp)" };
+	const just_below = { "frequency": note_frequency * Math.pow(2, -1 / 48), "name": note_name + " (a bit flat)" };
 	test_frequencies = test_frequencies.concat([ just_below, note, just_above ]);
 }
 
 window.addEventListener("load", initialize);
 
-var correlation_worker = new Worker("correlation_worker.js");
+const correlation_worker = new Worker("correlation_worker.js");
 correlation_worker.addEventListener("message", interpret_correlation_result);
 
 function initialize()
 {
-	var get_user_media = navigator.getUserMedia;
+	const get_user_media = navigator.getUserMedia;
 	get_user_media = get_user_media || navigator.webkitGetUserMedia;
 	get_user_media = get_user_media || navigator.mozGetUserMedia;
 	get_user_media.call(navigator, { "audio": true }, use_stream, function() {});
@@ -37,17 +37,17 @@ function initialize()
 
 function use_stream(stream)
 {
-	var audio_context = new AudioContext();
-	var microphone = audio_context.createMediaStreamSource(stream);
+	const audio_context = new AudioContext();
+	const microphone = audio_context.createMediaStreamSource(stream);
 	window.source = microphone; // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=934512
-	var script_processor = audio_context.createScriptProcessor(1024, 1, 1);
+	const script_processor = audio_context.createScriptProcessor(1024, 1, 1);
 
 	script_processor.connect(audio_context.destination);
 	microphone.connect(script_processor);
 
-	var buffer = [];
-	var sample_length_milliseconds = 100;
-	var recording = true;
+	const buffer = [];
+	const sample_length_milliseconds = 100;
+	const recording = true;
 
 	// Need to leak this function into the global namespace so it doesn't get
 	// prematurely garbage-collected.
@@ -83,17 +83,17 @@ function use_stream(stream)
 
 function interpret_correlation_result(event)
 {
-	var timeseries = event.data.timeseries;
-	var frequency_amplitudes = event.data.frequency_amplitudes;
+	const timeseries = event.data.timeseries;
+	const frequency_amplitudes = event.data.frequency_amplitudes;
 
 	// Compute the (squared) magnitudes of the complex amplitudes for each
 	// test frequency.
-	var magnitudes = frequency_amplitudes.map(function(z) { return z[0] * z[0] + z[1] * z[1]; });
+	const magnitudes = frequency_amplitudes.map(function(z) { return z[0] * z[0] + z[1] * z[1]; });
 
 	// Find the maximum in the list of magnitudes.
-	var maximum_index = -1;
-	var maximum_magnitude = 0;
-	for (var i = 0; i < magnitudes.length; i++)
+	const maximum_index = -1;
+	const maximum_magnitude = 0;
+	for (const i = 0; i < magnitudes.length; i++)
 	{
 		if (magnitudes[i] <= maximum_magnitude)
 			continue;
@@ -104,28 +104,28 @@ function interpret_correlation_result(event)
 
 	// Compute the average magnitude. We'll only pay attention to frequencies
 	// with magnitudes significantly above average.
-	var average = magnitudes.reduce(function(a, b) { return a + b; }, 0) / magnitudes.length;
-	var confidence = maximum_magnitude / average;
-	var confidence_threshold = 10; // empirical, arbitrary.
+	const average = magnitudes.reduce(function(a, b) { return a + b; }, 0) / magnitudes.length;
+	const confidence = maximum_magnitude / average;
+	const confidence_threshold = 10; // empirical, arbitrary.
 	if (confidence > confidence_threshold)
 	{
-		var dominant_frequency = test_frequencies[maximum_index];
+		const dominant_frequency = test_frequencies[maximum_index];
 		document.getElementById("note-name").textContent = dominant_frequency.name;
 		document.getElementById("frequency").textContent = dominant_frequency.frequency;
 	}
 }
 
 // Unnecessary addition of button to play an E note.
-var note_context = new AudioContext();
-var note_node = note_context.createOscillator();
-var gain_node = note_context.createGain();
+const note_context = new AudioContext();
+const note_node = note_context.createOscillator();
+const gain_node = note_context.createGain();
 note_node.frequency = C2 * Math.pow(2, 4 / 12); // E, ~82.41 Hz.
 gain_node.gain.value = 0;
 note_node.connect(gain_node);
 gain_node.connect(note_context.destination);
 note_node.start();
 
-var playing = false;
+const playing = false;
 function toggle_playing_note()
 {
 	playing = !playing;
