@@ -21,7 +21,7 @@ require('./config/passport');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const goalsRouter = require('./routes/goals');
-const questionsRouter =require('./routes/questions')
+const questionsRouter = require('./routes/questions')
 
 
 // view engine setup

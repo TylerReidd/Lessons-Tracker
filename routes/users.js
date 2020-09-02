@@ -4,8 +4,12 @@ const usersCtrl = require('../controllers/users');
 
 // GET /users
 router.get('/', usersCtrl.index);
+//display a page of goals
 router.get('/users/goals', isLoggedIn, usersCtrl.showGoalsPage)
+//page to create a new goal
 router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
+
+
 
 
 

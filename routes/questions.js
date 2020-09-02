@@ -1,7 +1,9 @@
 const router = require('express').Router()
 const questionsCtrl = require('../controllers/questions')
 
-router.get('/', isLoggedIn, questionsCtrl.index)
+
+
+router.get('/questions/index', isLoggedIn, questionsCtrl.index)
 
 
 function isLoggedIn(req, res, next) {
