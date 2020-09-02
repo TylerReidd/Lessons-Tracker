@@ -1,7 +1,7 @@
 const Question = require('../models/question')
 
 
-module.exporets = {
+module.exports = {
     index
 }
 
