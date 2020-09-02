@@ -9,6 +9,8 @@ router.get('/users/goals', isLoggedIn, usersCtrl.showGoalsPage)
 //page to create a new goal
 router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
 
+router.get('/users/questions', isLoggedIn, usersCtrl.questionsPage)
+
 
 
 

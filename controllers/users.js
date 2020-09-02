@@ -4,8 +4,13 @@ const User = require('../models/user');
 module.exports = {
   index,
   showGoalsPage, 
-  createGoalsPage
+  createGoalsPage,
+  questionsPage
 };
+
+function questionsPage(req,res){
+  res.render('users/questions', {user: req.question, questions})
+}
 
 
 
