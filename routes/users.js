@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const usersCtrl = require('../controllers/users');
 const { route } = require('./goals');
+const users = require('../controllers/users');
 
 // GET /users
 router.get('/', usersCtrl.index);
@@ -12,6 +13,10 @@ router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
 router.get('/users/questions', isLoggedIn, usersCtrl.questionsIndex)
 
 router.post('/users/questions',isLoggedIn,usersCtrl.createQuestion)
+
+router.delete('/users/questions/:id', isLoggedIn, usersCtrl.deleteQuestion)
+
+
 
 
 function isLoggedIn(req, res, next) {

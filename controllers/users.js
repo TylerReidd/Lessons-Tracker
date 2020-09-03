@@ -7,9 +7,23 @@ module.exports = {
   showGoalsPage, 
   createGoalsPage,
   questionsIndex,
-  createQuestion
+  createQuestion,
+  deleteQuestion
 };
 
+function deleteQuestion(req,res) {
+  Question.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect('/users/questions')
+  })
+}
+// )
+// }
+
+// let idx = req.user.questions.findIndex( (q) => {req.params.id})
+// req.user.questions.splice(idx, 1)
+// req.user.save().then(() => {
+//   res.redirect('/users/questions')
 function createQuestion(req,res) {
   req.body.askedBy = req.user.name
   Question.create(req.body)
