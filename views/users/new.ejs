@@ -1,3 +1,9 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  
+<body>
 <nav>
     <div class="nav-wrapper">
       <a href="/users/goals" class="brand-logo left">My Goals</a>
@@ -6,12 +12,16 @@
     </div>
   </nav>
 
-  <body>
+  
       <h2 class="table">Set a New Goal!</h2>
+
       <form class="table" action="/goals" method="POST" > 
-    <label> Goal
-            <input required name="goal" type="text"><br>
-    </label><br>
+        <div>
+
+            <label> Goal
+                    <input required name="goal" type="text"><br>
+            </label><br>
+        </div>
     <label> Practice Days
         <input required name="daysPracticed" type="text">
     </label><br><br>
@@ -30,8 +40,7 @@
         <input name="completed" type="checkbox">
     </label>
     <br><br>
-    <input type="submit" class="btn btn-info" value="Submit">
+    <input type="submit" class="btn btn-primary" value="Submit">
 
     </form>
   </body>
-

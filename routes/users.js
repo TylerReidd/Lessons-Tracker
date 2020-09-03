@@ -16,6 +16,8 @@ router.post('/users/questions',isLoggedIn,usersCtrl.createQuestion)
 
 router.delete('/users/questions/:id', isLoggedIn, usersCtrl.deleteQuestion)
 
+// router.get('/users/replies/:id', isLoggedIn, usersCtrl.replyPage)
+
 
 
 

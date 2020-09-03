@@ -8,8 +8,20 @@ module.exports = {
   createGoalsPage,
   questionsIndex,
   createQuestion,
-  deleteQuestion
+  deleteQuestion,
+  // replyPage
 };
+
+// function replyPage(req,res) {
+//   Question.findById(req.params.id)
+//   .then((question) => {
+//     res.render('users/replies', {
+//       title: "Answer Questions",
+//       user: req.user, question
+//     })
+//   })
+// }
+
 
 function deleteQuestion(req,res) {
   Question.findByIdAndDelete(req.params.id)
