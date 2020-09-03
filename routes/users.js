@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const usersCtrl = require('../controllers/users');
-// const users = require('../controllers/users');
+const { route } = require('./goals');
 
 // GET /users
 router.get('/', usersCtrl.index);
@@ -11,11 +11,7 @@ router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
 
 router.get('/users/questions', isLoggedIn, usersCtrl.questionsPage)
 
-
-
-
-
-
+router.post('/users/questions',isLoggedIn,usersCtrl.createQuestion)
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect("/auth/google");

@@ -2,13 +2,12 @@
 
 
 <h3>Ask a Question</h3>
-<form action="/messages" method="POST">
+<form action="/users/questions" method="POST">
   <div class="form-group">
-    <input type="text" class="form-control" aria-describedby="message" name="title" placeholder="Enter message...">
+    <input type="text" class="form-control" aria-describedby="message" name="question" placeholder="Enter question...">
   </div>
   <button type="submit" class="btn btn-success">Create Post</button>
 </form>
-
 <table class="table">
     <thead>
         <tr>
@@ -17,12 +16,14 @@
         </tr>
     </thead>
     <tbody>
+        <% if(question !== null) { %> 
         <% question.forEach((q) => { %> 
         <tr>
             <td><form action="/questions/<%= q.id %>" method="POST"></form></td>
             <td><%= q.askedBy %></td>
             <td><%= q.question %> </td>
         </tr>
-     <% }) %>
+    
+     <% }) }%>
     </tbody>
 </table>

@@ -17,7 +17,7 @@
     <tbody>
         <% user.goals.forEach((g) => { %> 
         <tr>
-            <td><form action="/goals/<%= g.id %>" method="POST">
+            <td><form action="/goals/<%= g.id %>" method="POST"></form>
             </form></td>
             <td><%= g.goal %></td>
             <td><%= g.daysPracticed %></td>
