@@ -10,20 +10,20 @@
       <h2 class="table">Set a New Goal!</h2>
       <form class="table" action="/goals" method="POST" > 
     <label> Goal
-            <input name="goal" type="text"><br>
+            <input required name="goal" type="text"><br>
     </label><br>
     <label> Practice Days
-        <input name="daysPracticed" type="text">
+        <input required name="daysPracticed" type="text">
     </label><br><br>
     <label>Challenges
-        <input name="challenges" type="text">
+        <input required name="challenges" type="text">
         <br><br>
     </label>
     <label> Start Date
-        <input type="date" name="startDate">
+        <input required type="date" name="startDate">
     </label><br> <br>
     <label> Due Date
-        <input type="date" name="dueDate">
+        <input required type="date" name="dueDate">
     </label>
     <br><br>
     <label>Completed?
