@@ -13,19 +13,11 @@ module.exports = {
 function createQuestion(req,res) {
   req.body.askedBy = req.user.name
   Question.create(req.body)
-  .then((question) => {
+  .then(() => {
     res.redirect('/users/questions')
   })
 }
-    // {(
-    //   askedBy: req.user.name, 
-    //    question: req.body.question
-    //   })    
-
-// Question.find({})
-  // .then((question) => {
-  //     res.render('users/questions', {title: "question page", question})
-  // })
+    
 
 
 
