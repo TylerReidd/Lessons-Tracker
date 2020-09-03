@@ -9,9 +9,11 @@ router.get('/users/goals', isLoggedIn, usersCtrl.showGoalsPage)
 //page to create a new goal
 router.get('/users/new', isLoggedIn, usersCtrl.createGoalsPage)
 
-router.get('/users/questions', isLoggedIn, usersCtrl.questionsPage)
+router.get('/users/questions', isLoggedIn, usersCtrl.questionsIndex)
 
 router.post('/users/questions',isLoggedIn,usersCtrl.createQuestion)
+
+
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect("/auth/google");

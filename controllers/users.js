@@ -6,26 +6,31 @@ module.exports = {
   index,
   showGoalsPage, 
   createGoalsPage,
-  questionsPage,
+  questionsIndex,
   createQuestion
 };
 
 function createQuestion(req,res) {
-
-  Question.create(
-    { 
-      askedBy: req.user.name, 
-      question: req.body.question
-    })
-    
-  Question.find({})
+  req.body.askedBy = req.user.name
+  Question.create(req.body)
   .then((question) => {
-      res.render('users/questions', {title: "question page", question})
+    res.redirect('/users/questions')
   })
 }
+    // {(
+    //   askedBy: req.user.name, 
+    //    question: req.body.question
+    //   })    
 
-//ONLY TAKING YOU TO PAGE 
-function questionsPage(req,res){
+// Question.find({})
+  // .then((question) => {
+  //     res.render('users/questions', {title: "question page", question})
+  // })
+
+
+
+//ONLY TAKING YOU TO Index 
+function questionsIndex(req,res){
   Question.find({})
   .then((question) => {
     res.render('users/questions', {title: "Question page", question})
@@ -35,16 +40,16 @@ function questionsPage(req,res){
 //creates question 
 
 
-//Render page with input forms to create a goal
+//Render Index with input forms to create a goal
 function createGoalsPage(req,res) {
   res.render('users/new')
 }
 
-//Create page with a list of goals 
+//Create Index with a list of goals 
 function showGoalsPage(req,res) {
   User.findById(req.user.id)
   .then((user) => {
-    res.render('users/goals', {title: "Profile Page", user })
+    res.render('users/goals', {title: "Profile page", user })
   })
 }
 
